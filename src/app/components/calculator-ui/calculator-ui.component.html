@@ -1,0 +1,72 @@
+<h1 class="font-bold text-lg text-design-slate-900">Mortgage Calculator</h1>
+<a class="underline font-light text-sm text-design-slate-900"
+  href="#" >Clear All</a>
+
+<!-- Mortgage Amount -->
+<label for="amount">
+  <p class="text-sm text-design-slate-900">Mortgage Amount</p>
+  <span class="text-gray-500">£</span> <!-- Currency sign here -->
+  <input
+    type="number"
+    id="amount"
+    class="w-full h-10 p-2 border border-gray-300 rounded text-center" >
+  <svg class="flex-shrink-0 size-4 text-red-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="10"></circle>
+    <line x1="12" x2="12" y1="8" y2="12"></line>
+    <line x1="12" x2="12.01" y1="16" y2="16"></line>
+  </svg>
+  <span>Not a valid input</span>
+</label>
+
+<!-- Mortgage Terms -->
+<label for="terms">
+  <p class="text-sm text-design-slate-900">Mortgage Terms</p>
+  <span class="text-gray-500">years</span> <!-- years -->
+  <input
+    type="number"
+    id="terms"
+    class="w-full h-10 p-2 border border-gray-300 rounded text-center" >
+  <svg class="flex-shrink-0 size-4 text-red-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="10"></circle>
+    <line x1="12" x2="12" y1="8" y2="12"></line>
+    <line x1="12" x2="12.01" y1="16" y2="16"></line>
+  </svg>
+  <span>Not a valid input</span>
+</label>
+
+
+<!-- Mortgage Interest  Rate-->
+<label for="interest">
+  <p class="text-sm text-design-slate-900">Interest Rate</p>
+  <span class="text-gray-500">%</span> <!-- years -->
+  <input
+    type="number"
+    id="interest"
+    class="w-full h-10 p-2 border border-gray-300 rounded text-center" >
+  <svg class="flex-shrink-0 size-4 text-red-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="10"></circle>
+    <line x1="12" x2="12" y1="8" y2="12"></line>
+    <line x1="12" x2="12.01" y1="16" y2="16"></line>
+  </svg>
+  <span>Not a valid input</span>
+</label>
+
+<!-- Mortgage Type-->
+<form>
+  <p>Mortgage Type</p>
+  <div>
+    <input type="radio" id="repayment" name="payment-method" value="repayment" checked>
+    <label for="repayment">repayment</label>
+  </div>
+  <div>
+    <input type="radio" id="interest-only" name="payment-method" value="interest-only">
+    <label for="interest-only">interest-only</label>
+  </div>
+  <span>Not a valid input</span>
+  <div>
+    <i>calc logo</i>
+    <a href="#">Calculate Repayments</a>
+  </div>
+
+</form>
+
