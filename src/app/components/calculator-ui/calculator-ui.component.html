@@ -7,7 +7,7 @@
   </div>
   <!--MORTGAGE AMOUNT FORM---------------------------------->
    <div class="calc-ui-form">
-     <form class="inline" [formGroup]="mortgageForm" (ngSubmit)="calculateRepayment()">
+     <form class="inline" [formGroup]="mortgageForm" (ngSubmit)="calculateMortgage()">
        <!--principal amount---------------------------------->
        <div class="calc-ui-form-amount mb-4">
          <label class="text-sm text-design-slate-500 ">Mortgage Amount
@@ -20,10 +20,10 @@
        </div>
 
        <!--mortgage term & interest rate---------------------------------->
-       <div class="calc-ui-form-mortgage flex flex-col lg:flex-row ">
+       <div class="calc-ui-form-mortgage flex flex-col lg:flex-row lg:justify-between">
 
          <!--terms---------------------------------->
-         <div class="calc-ui-form-term-mortgage-terms mb-4">
+         <div class="calc-ui-form-term-mortgage-terms mb-4 lg:w-[49%]">
            <label class="text-sm text-design-slate-500">Mortgage Term
              <input type="number" formControlName="numberOfPayments"
              class="calc-ui-form-input mt-2 w-full border-2 border-design-slate-500 p-2 rounded
@@ -32,7 +32,7 @@
            <p class="mt-2 text-sm text-red-500">This input is required</p>
          </div>
          <!--interest rate---------------------------------->
-         <div class="calc-ui-form-term-mortgage-interest mb-4">
+         <div class="calc-ui-form-term-mortgage-interest mb-4 lg:w-[49%]">
 
            <!--interest rate---------------------------------->
            <label class="text-sm text-design-slate-500">Interest Rate
@@ -49,8 +49,9 @@
            <span class="text-sm text-design-slate-500 ">Mortgage Type</span>
            <!--Repayment radio---------------------------------->
            <div class="w-full border-2 border-design-slate-500 p-2 rounded mt-2 mb-2">
-             <label >
-             <input type="radio" value="REPAYMENT" formControlName="mortgageType.value"
+             <label class="font-bold" >
+             <input type="radio" name="mortgageType" value="REPAYMENT" formControlName="mortgageType"
+                    (change)="mortgageForm.controls['mortgageType'].setValue('REPAYMENT')"
              class="mr-2 "> Repayment
              </label>
            </div>
@@ -58,8 +59,9 @@
            <!--Interest Only radio---------------------------------->
            <div class="mb-8">
               <div class="w-full border-2 border-design-slate-500 p-2 rounded mt-2 mb-2">
-               <label >
-                 <input type="radio" value="INTEREST_ONLY" formControlName="mortgageType.value"
+               <label class="font-bold">
+                 <input type="radio" name="mortgageType" value="INTEREST_ONLY" formControlName="mortgageType"
+                        (change)="mortgageForm.controls['mortgageType'].setValue('INTEREST_ONLY')"
                         class="mr-2 "> Interest Only
                </label>
              </div>
@@ -79,6 +81,7 @@
            Calculate Repayments</button>
        </div>
      </form>
+
    </div>
 
 
