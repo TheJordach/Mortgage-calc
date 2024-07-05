@@ -1,72 +1,86 @@
-<h1 class="font-bold text-lg text-design-slate-900">Mortgage Calculator</h1>
-<a class="underline font-light text-sm text-design-slate-900"
-  href="#" >Clear All</a>
+<div class="calc-ui">
 
-<!-- Mortgage Amount -->
-<label for="amount">
-  <p class="text-sm text-design-slate-900">Mortgage Amount</p>
-  <span class="text-gray-500">£</span> <!-- Currency sign here -->
-  <input
-    type="number"
-    id="amount"
-    class="w-full h-10 p-2 border border-gray-300 rounded text-center" >
-  <svg class="flex-shrink-0 size-4 text-red-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <circle cx="12" cy="12" r="10"></circle>
-    <line x1="12" x2="12" y1="8" y2="12"></line>
-    <line x1="12" x2="12.01" y1="16" y2="16"></line>
-  </svg>
-  <span>Not a valid input</span>
-</label>
-
-<!-- Mortgage Terms -->
-<label for="terms">
-  <p class="text-sm text-design-slate-900">Mortgage Terms</p>
-  <span class="text-gray-500">years</span> <!-- years -->
-  <input
-    type="number"
-    id="terms"
-    class="w-full h-10 p-2 border border-gray-300 rounded text-center" >
-  <svg class="flex-shrink-0 size-4 text-red-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <circle cx="12" cy="12" r="10"></circle>
-    <line x1="12" x2="12" y1="8" y2="12"></line>
-    <line x1="12" x2="12.01" y1="16" y2="16"></line>
-  </svg>
-  <span>Not a valid input</span>
-</label>
-
-
-<!-- Mortgage Interest  Rate-->
-<label for="interest">
-  <p class="text-sm text-design-slate-900">Interest Rate</p>
-  <span class="text-gray-500">%</span> <!-- years -->
-  <input
-    type="number"
-    id="interest"
-    class="w-full h-10 p-2 border border-gray-300 rounded text-center" >
-  <svg class="flex-shrink-0 size-4 text-red-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <circle cx="12" cy="12" r="10"></circle>
-    <line x1="12" x2="12" y1="8" y2="12"></line>
-    <line x1="12" x2="12.01" y1="16" y2="16"></line>
-  </svg>
-  <span>Not a valid input</span>
-</label>
-
-<!-- Mortgage Type-->
-<form>
-  <p>Mortgage Type</p>
-  <div>
-    <input type="radio" id="repayment" name="payment-method" value="repayment" checked>
-    <label for="repayment">repayment</label>
+  <!--TITLE---------------------------------->
+  <div class="calc-ui-title mb-4">
+    <h1 class="font-bold text-design-slate-900 text-2xl">Mortgage Calculator</h1>
+    <a class="text-sm underline text-design-slate-500" href="#" (click)="clearAll()">Clear All</a>
   </div>
-  <div>
-    <input type="radio" id="interest-only" name="payment-method" value="interest-only">
-    <label for="interest-only">interest-only</label>
-  </div>
-  <span>Not a valid input</span>
-  <div>
-    <i>calc logo</i>
-    <a href="#">Calculate Repayments</a>
-  </div>
+  <!--MORTGAGE AMOUNT FORM---------------------------------->
+   <div class="calc-ui-form">
+     <form class="inline" [formGroup]="mortgageForm" (ngSubmit)="calculateRepayment()">
+       <!--principal amount---------------------------------->
+       <div class="calc-ui-form-amount mb-4">
+         <label class="text-sm text-design-slate-500 ">Mortgage Amount
+         <input type="number" formControlName="principalAmount"
+          class="calc-ui-form-input mt-2 w-full border-2 border-design-slate-500 p-2 rounded
+          text-sm font-bold text-design-slate-900
+          "/>
+         </label>
+         <p class="mt-2 text-sm text-red-500">This input is required</p>
+       </div>
 
-</form>
+       <!--mortgage term & interest rate---------------------------------->
+       <div class="calc-ui-form-mortgage flex flex-col lg:flex-row ">
 
+         <!--terms---------------------------------->
+         <div class="calc-ui-form-term-mortgage-terms mb-4">
+           <label class="text-sm text-design-slate-500">Mortgage Term
+             <input type="number" formControlName="numberOfPayments"
+             class="calc-ui-form-input mt-2 w-full border-2 border-design-slate-500 p-2 rounded
+             text-sm font-bold text-design-slate-900"/>
+           </label>
+           <p class="mt-2 text-sm text-red-500">This input is required</p>
+         </div>
+         <!--interest rate---------------------------------->
+         <div class="calc-ui-form-term-mortgage-interest mb-4">
+
+           <!--interest rate---------------------------------->
+           <label class="text-sm text-design-slate-500">Interest Rate
+             <input type="number" formControlName="interestRate"
+                    class="calc-ui-form-input mt-2 w-full border-2 border-design-slate-500 p-2 rounded
+             text-sm font-bold text-design-slate-900"/>
+           </label>
+           <p class="mt-2 text-sm text-red-500">This input is required</p>
+         </div>
+       </div>
+
+         <!--Mortgage Type 2 radio---------------------------------->
+         <div class="">
+           <span class="text-sm text-design-slate-500 ">Mortgage Type</span>
+           <!--Repayment radio---------------------------------->
+           <div class="w-full border-2 border-design-slate-500 p-2 rounded mt-2 mb-2">
+             <label >
+             <input type="radio" value="REPAYMENT" formControlName="mortgageType.value"
+             class="mr-2 "> Repayment
+             </label>
+           </div>
+
+           <!--Interest Only radio---------------------------------->
+           <div class="mb-8">
+              <div class="w-full border-2 border-design-slate-500 p-2 rounded mt-2 mb-2">
+               <label >
+                 <input type="radio" value="INTEREST_ONLY" formControlName="mortgageType.value"
+                        class="mr-2 "> Interest Only
+               </label>
+             </div>
+             <p class="mt-2 text-sm text-red-500">This input is required</p>
+           </div>
+         </div>
+
+
+
+       <div class="calc-ui-btn">
+
+         <button type="submit"
+                 class="calc-ui-btn-submit bg-design-primary-lime text-design-slate-900
+                 text-md font-bold py-4 px-6 rounded-3xl
+          ">
+           <i class="fa fa-calculator font-bold text-design-slate-900 mr-2"></i>
+           Calculate Repayments</button>
+       </div>
+     </form>
+   </div>
+
+
+
+</div>
